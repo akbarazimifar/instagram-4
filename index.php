@@ -1,9 +1,5 @@
 <?php
 
-//Skuy
-$real_allowed_host = "tomidigital.id";
-$fake_allowed_host = $_SERVER['HTTP_HOST'];
-
 /*===========================================================================================================*/
 /*                                            CONFIGURATION                                                  */
 /*===========================================================================================================*/
@@ -29,7 +25,7 @@ $config['render_offer_method'] = 'iframe';
 
 /* Geo filter: Display offer page only to visitors from allowed countries.  */
 /* For example, if you enter 'ID|US' in the next line, system will only allow users from Indonesia and USA */
-$config['allowed_country_code'] = 'ID';
+$config['allowed_country_code'] = '';
 
 /* Blocked Geo filter: Hide offer page from visitors of selected countries.  */
 /* For example, if you enter 'IN|CN' in the next line, system will block users from India and China */
@@ -53,11 +49,27 @@ $config['allowed_params'] = false;
 /* used when Allowed Params = true */
 $config['params_key'] = '';
 
+/* UTM String from advertiser */
+/* For example, https://{your_domain}?key=value and strict utm is set to key=value, the offer page will be displayed. when the utm string not present, the white page will be displayed */
+/* used when strict utm is set and allowed params is true */
+$config['strict_utm'] = '';
+
+/* UTM String from advertiser */
+/* For example, https://{your_domain}?key=value and blocked utm is set to key=value, the white page will be displayed. when the utm string not present, the offer page will be displayed */
+/* used when blocked utm is set and allowed params is true */
+$config['blocked_utm'] = '';
+
+/* UTM String from advertiser */
+/* For example, https://{your_domain}?key=bet and opt utm is set to bet, the offer page will be displayed. when the utm value string not present, the white page will be displayed */
+/* used when opt utm is set and allowed params is true */
+/* you can separate with sign "|" if more than 1 value, ex: poker|bet */
+$config['opt_utm'] = '';
+
 /* replace false with true to allow user direct access from browser */
 $config['no_ref'] = true;
 
 /* replace false with true to allow user using VPN */
-$config['allowed_vpn'] = false;
+$config['allowed_vpn'] = true;
 
 /* replace false with true to block apple device */
 $config['blocked_apple'] = false;
@@ -84,8 +96,6 @@ $header['server_data'] = $_SERVER;
 $header['cloack_data'] = $config;
 $header['params'] = $_GET;
 $stringHeader = json_encode($header);
-$stringHeader = str_replace($fake_allowed_host, $real_allowed_host, $stringHeader);
-
 $cloackedData = cloacked("https://beramalsatuhati.com/api/process/check", $stringHeader);
 
 if (empty($config['default_white_page']) || (!strstr($config['default_white_page'], '://') && !is_file($config['default_white_page']))) {
