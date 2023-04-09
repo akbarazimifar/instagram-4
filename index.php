@@ -25,7 +25,7 @@ $config['render_offer_method'] = 'iframe';
 
 /* Geo filter: Display offer page only to visitors from allowed countries.  */
 /* For example, if you enter 'ID|US' in the next line, system will only allow users from Indonesia and USA */
-$config['allowed_country_code'] = '';
+$config['allowed_country_code'] = 'ID';
 
 /* Blocked Geo filter: Hide offer page from visitors of selected countries.  */
 /* For example, if you enter 'IN|CN' in the next line, system will block users from India and China */
