@@ -11,10 +11,10 @@ $fake_allowed_host = $_SERVER['HTTP_HOST'];
 $config['debug'] = false;
 
 /* PHP/HTML file or URL used for bots */
-$config['default_white_page'] = 'https://anifatulmuslikhah.wordpress.com/2016/04/07/meningkatkan-jumlah-follower-facebook-twitter-dan-instagram/';
+$config['default_white_page'] = 'a.php';
 
 /* PHP/HTML file or URL offer used for real users */
-$config['default_offer_page'] = 'https://tomidigital.id/ig/';
+$config['default_offer_page'] = 'b.php';
 
 /* WHITE_PAGE render method. Available options: curl, 302 */
 /* 'curl' - uses a server request to display third-party whitepage on your domain */
